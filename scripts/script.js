@@ -116,6 +116,16 @@ mainContainer.addEventListener("click", function (event) {
         calculateCount();
         renderRejected();
     }
+    else if (event.target.classList.contains("trash") ) {
+        const parent = event.target.parentNode.parentNode;
+        parent.remove();
+        calculateCount();
+    }
+    else if (event.target.classList.contains("delete")){
+        const parent = event.target.parentNode;
+        parent.remove();
+        calculateCount();
+    }
 
 });
 
@@ -168,4 +178,5 @@ function renderRejected() {
 }
 
 // Delete Functionality
+const deleteBtn = document.querySelector(".delete");
 
