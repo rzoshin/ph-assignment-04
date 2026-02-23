@@ -1,3 +1,18 @@
+// Tracking the counts
+const total = document.getElementById("totalCount");
+const interviewCount = document.getElementById("interviewCount");
+const rejectedCount = document.getElementById("rejectedCount");
+
+let interviewArray = [];
+let rejectedArray = [];
+
+function calculateCount() {
+    const parent = document.getElementById("jobs-card");
+    total.innerText = parent.children.length;
+    interviewCount.innerText = interviewArray.length;
+    rejectedCount.innerText = rejectedArray.length;
+}
+
 // Toggle Style between Tabs
 
 function showOnly(id) {
@@ -16,35 +31,28 @@ function showOnly(id) {
     const interviewTab = document.getElementById("interview-tab");
     const rejectedTab = document.getElementById("rejected-tab");
     const allTab = document.getElementById("all-tab");
+
+    const headCount = document.getElementById("No-of-jobs");
+
     interviewTab.classList.remove("bg-[#3B82F6]", "text-white");
     rejectedTab.classList.remove("bg-[#3B82F6]", "text-white");
     allTab.classList.remove("bg-[#3B82F6]", "text-white");
 
     if (id == "interview-section") {
         interviewTab.classList.add("bg-[#3B82F6]", "text-white");
+        headCount.innerText = interviewArray.length;
     }
     else if (id == "rejected-section") {
         rejectedTab.classList.add("bg-[#3B82F6]", "text-white");
+        headCount.innerText = rejectedArray.length;
     }
-    else
+    else if (id == "jobs-card") {
         allTab.classList.add("bg-[#3B82F6]", "text-white");
-
+        headCount.innerText = total.innerText;
+    }     
 }
 
-// Tracking the counts
-const total = document.getElementById("totalCount");
-const interviewCount = document.getElementById("interviewCount");
-const rejectedCount = document.getElementById("rejectedCount");
 
-let interview = [];
-let rejected = [];
-
-function calculateCount() {
-    const parent = document.getElementById("jobs-card");
-    total.innerText = parent.children.length;
-    interviewCount.innerText = interview.length;
-    rejectedCount.innerText = rejected.length;
-}
 
 const mainContainer = document.querySelector("main");
 
@@ -65,14 +73,14 @@ mainContainer.addEventListener("click", function (event) {
             status,
             details
         }
-        const jobExist = interview.find(job => job.jobName == cardInfo.jobName);
-        const rejectedExist = rejected.find(job => job.jobName == cardInfo.jobName);
+        const jobExist = interviewArray.find(job => job.jobName == cardInfo.jobName);
+        const rejectedExist = rejectedArray.find(job => job.jobName == cardInfo.jobName);
 
         if (!jobExist) {
-            interview.push(cardInfo);
+            interviewArray.push(cardInfo);
         }
         if (rejectedExist) {
-            rejected = rejected.filter(job => job.jobName != cardInfo.jobName);
+            rejectedArray = rejectedArray.filter(job => job.jobName != cardInfo.jobName);
             renderRejected();
         }
         calculateCount();
@@ -94,15 +102,15 @@ mainContainer.addEventListener("click", function (event) {
             status,
             details
         }
-        const jobExist = rejected.find(job => job.jobName == cardInfo.jobName)
-        const interviewExist = interview.find(job => job.jobName == cardInfo.jobName);
+        const jobExist = rejectedArray.find(job => job.jobName == cardInfo.jobName)
+        const interviewExist = interviewArray.find(job => job.jobName == cardInfo.jobName);
 
         if (!jobExist) {
-            rejected.push(cardInfo);
+            rejectedArray.push(cardInfo);
         }
 
         if (interviewExist) {
-            interview = interview.filter(job => job.jobName != cardInfo.jobName);
+            interviewArray = interviewArray.filter(job => job.jobName != cardInfo.jobName);
             renderInterview();
         }
         calculateCount();
@@ -117,13 +125,13 @@ function renderInterview() {
     interviewSection.classList.add("space-y-4", "mb-5");
     interviewSection.innerHTML = " ";
 
-    for (let job of interview) {
+    for (let job of interviewArray) {
         let div = document.createElement("div");
         div.className = "p-6 bg-base-100 border border-[#F1F2F4] flex justify-between";
         div.innerHTML = `<div> <h4 class="jobName mb-1 text-lg font-semibold"> ${job.jobName}</h4><p class="  bio text-base text-[#64748B] font-regular"> ${job.bio}</p> <p class="description my-5 font-regular text-sm text-[#64748B]"> ${job.description}</p> <div class="state mb-2 py-2 px-3 text-sm font-medium bg-[#e2fee4] w-fit"> ${job.status} </div><p class="details mb-5 text-[#323B49] text-sm"> ${job.details} </p><div class="btn-container space-x-2"><button class="interview btn btn-success btn-outline">INTERVIEW</button><button class="rejected btn btn-error btn-outline">REJECTED</button></div></div> <button class="delete btn btn-circle text-[#64748B]"> <i id="trash" class="fa-regular fa-trash-can"></i> </button>`
         interviewSection.appendChild(div);
     }
-    if(interview.length == 0){
+    if(interviewArray.length == 0){
         let div = document.createElement("div");
         div.className = "py-[60px] px-10 bg-base-100 text-center";
         div.innerHTML = `<img class="mx-auto mb-5"src="./nothing.png" alt="">
@@ -140,7 +148,7 @@ function renderRejected() {
     rejectedSection.classList.add("space-y-4", "mb-5");
     rejectedSection.innerHTML = " ";
     
-    for (let job of rejected) {
+    for (let job of rejectedArray) {
         
         let div = document.createElement("div");
         
@@ -148,7 +156,7 @@ function renderRejected() {
         div.innerHTML = `<div> <h4 class="jobName mb-1 text-lg font-semibold"> ${job.jobName}</h4><p class="  bio text-base text-[#64748B] font-regular"> ${job.bio}</p> <p class="description my-5 font-regular text-sm text-[#64748B]"> ${job.description}</p> <div class="state mb-2 py-2 px-3 text-sm font-medium bg-[#FEE4E2] w-fit"> ${job.status} </div><p class="details mb-5 text-[#323B49] text-sm"> ${job.details} </p><div class="btn-container space-x-2"><button class="interview btn btn-success btn-outline">INTERVIEW</button><button class="rejected btn btn-error btn-outline">REJECTED</button></div> </div> <button class="delete btn btn-circle text-[#64748B]"> <i id="trash" class="fa-regular fa-trash-can"></i> </button>`
         rejectedSection.appendChild(div);
     }
-    if(rejected.length == 0){
+    if(rejectedArray.length == 0){
         let div = document.createElement("div");
         div.className = "py-[60px] px-10 bg-base-100 text-center";
         div.innerHTML = `<img class="mx-auto mb-5"src="./nothing.png" alt="">
@@ -158,3 +166,6 @@ function renderRejected() {
     }
     
 }
+
+// Delete Functionality
+
