@@ -72,6 +72,7 @@ mainContainer.addEventListener("click", function (event) {
         if (grandParent.id == "jobs-card") {
             totalCount.innerText = grandParent.children.length;
         }
+        
         if (grandParent.children.length == 0) {
             grandParent.appendChild(createEmptyState());
         }
