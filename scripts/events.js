@@ -25,7 +25,10 @@ mainContainer.addEventListener("click", function (event) {
             headCount.innerText = rejectedArray.length;
             renderRejected();
         }
-
+        
+        if(document.getElementById("all-tab").classList.contains("bg-[#3B82F6]")){
+            headCount.innerText = total.innerText;
+        }
         calculateCount();
         renderInterview();
     }
@@ -48,6 +51,9 @@ mainContainer.addEventListener("click", function (event) {
             interviewArray = interviewArray.filter(job => job.jobName != cardInfo.jobName);
             headCount.innerText = interviewArray.length;
             renderInterview();
+        }
+        if(document.getElementById("all-tab").classList.contains("bg-[#3B82F6]")){
+            headCount.innerText = total.innerText;
         }
 
         calculateCount();
