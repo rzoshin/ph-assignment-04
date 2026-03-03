@@ -1,3 +1,112 @@
+<p align="center">
+  <img src="./assets/job-tracker-banner.png" alt="Job Application Tracker Banner" width="100%" />
+</p>
+
+<h1 align="center">📊 Job Application Tracker</h1>
+
+<p align="center">
+
+<a href="https://rzoshin.github.io/job-application-tracker/">
+  <img src="https://img.shields.io/badge/Live-Demo-success?style=for-the-badge&logo=githubpages" />
+</a>
+
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+
+<img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+
+<img src="https://img.shields.io/badge/DaisyUI-5A0EF8?style=for-the-badge" />
+
+<img src="https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+
+<img src="https://img.shields.io/badge/Responsive-Design-blue?style=for-the-badge" />
+
+<img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge" />
+
+</p>
+
+---
+
+## 📌 Project Overview
+
+**Job Application Tracker** is a dynamic dashboard-based web application built to manage and monitor job applications efficiently.
+
+The system enables users to track total applications, categorize them by status (All, Interview, Rejected), and update application progress in real time using event-driven state transitions.
+
+---
+
+## 🔗 Live Demo
+
+👉 https://rzoshin.github.io/job-application-tracker/
+
+---
+
+## ✨ Key Features
+
+- 📈 Real-time application count tracking
+- 🎯 Status-based filtering:
+  - All
+  - Interview
+  - Rejected
+- 🔄 Dynamic state transitions
+- 🗂 Interactive job cards
+- 🧮 Auto-updating dashboard metrics
+- 📱 Fully responsive layout
+- 🧩 Empty-state UI handling (No jobs available)
+
+---
+
+## 🛠 Technologies Used
+
+- **HTML5**
+- **Tailwind CSS**
+- **DaisyUI**
+- **Vanilla JavaScript (ES6)**
+- DOM Manipulation
+- Event-Driven Logic
+- Responsive Web Design
+
+---
+
+## 🧠 Core Logic Implementation
+
+This project focuses heavily on front-end state management concepts:
+
+- Dynamic DOM updates
+- Event listeners for status transitions
+- Conditional rendering based on application state
+- Live metric recalculation
+- Filtering logic without page reload
+- Interactive UI feedback
+
+---
+
+## 🎯 Purpose of the Project
+
+This project was developed to:
+
+- Strengthen JavaScript event handling skills
+- Practice front-end state logic
+- Build structured dashboard interfaces
+- Improve component organization using Tailwind
+- Simulate real-world tracking system behavior
+
+---
+
+## 🚀 Future Enhancements
+
+- Persistent storage using LocalStorage
+- Backend integration with database
+- Add/Edit/Delete job functionality
+- Search & sort options
+- Authentication system
+
+---
+
+## 👨‍💻 Author
+
+**Raiyan Zannat**  
+CSE Graduate | MSc Engineering Candidate |
+Focused on Front-End Systems, AI & Intelligent Applications
 
 ---
 
